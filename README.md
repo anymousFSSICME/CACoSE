@@ -1,1 +1,1 @@
-Code For `Task-adaptive Progressive Spectrum Enhancement for Few-shot Semantic Segmentation`
+Code For `Class Adaptive Coarse-to-fine Spectrum Enhancement for Few-shot Semantic Segmentation`
