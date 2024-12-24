@@ -299,7 +299,7 @@ class MixVisionTransformer(BaseModule):
         )
         from timm.models.xcit import XCACrossBlock
         self.xcabs  = nn.ModuleList([XCACrossBlock(dim=64,num_heads=2) for _ in range(3)])
-        self.gbp = GBP(embed_dims)
+        self.gba = GBA(embed_dims)
         self.cre = CRE(embed_dims)
          
         
@@ -408,7 +408,7 @@ class MixVisionTransformer(BaseModule):
         g = torch.exp(- ((yv - y_idx) ** 2 * sigma[:,:1]+ (xv - x_idx) ** 2 * sigma[:,1:] - 2*cov*(xv - x_idx) * (yv - y_idx)*torch.sqrt(sigma[:,:1] * sigma[:,1:])))
         #* sigma_inverse/(torch.sqrt(2 * (torch.zeros(1).cuda() + np.pi)))
         return g/g.sum(dim=(2,3),keepdim=True)
-    class GBP(nn.Module):
+    class GBA(nn.Module):
       def __init__(self,in_dim,theta=0.5,gamma=0.5):
           super().__init__()
           self.var_conv = nn.Conv2d(in_dim,2 * in_dim,1)
